@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flipkart-style Login (Demo)</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-blue:#2874f0; 
+      --brand-yellow:#ffcc00; 
+      --muted:#6b7280;
+      --bg:#f4f8ff;
+      --card-bg: #fff;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background: linear-gradient(180deg,var(--bg) 0%, #ffffff 100%);
+      display:flex;align-items:center;justify-content:center;
+      padding:32px;
+    }
+    .container{
+      width:100%;max-width:960px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+    }
+
+   
+    .promo{
+      background: linear-gradient(135deg,var(--brand-blue), #1a5ed6);
+      color: #fff;padding:34px;border-radius:12px;display:flex;flex-direction:column;gap:18px;
+      box-shadow: 0 8px 30px rgba(33, 49, 90, 0.12);
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px
+    }
+    .logo .mark{width:44px;height:44px;border-radius:8px;background:var(--brand-yellow);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800}
+    .promo h1{margin:0;font-size:28px}
+    .promo p{margin:0;color:rgba(255,255,255,0.9);line-height:1.4}
+    .promo ul{margin:12px 0 0 18px;padding:0}
+    .promo li{margin:8px 0;}
+
+  
+    .card{
+      background:var(--card-bg);padding:28px;border-radius:12px;box-shadow:0 8px 20px rgba(20,30,60,0.06);
+    }
+    .card h2{margin:0 0 8px 0;font-size:20px}
+    .card p{margin:0 0 18px 0;color:var(--muted)}
+
+    .form-group{margin-bottom:14px}
+    label{display:block;font-size:13px;color:#374151;margin-bottom:6px}
+    input[type="text"], input[type="password"], input[type="email"]{
+      width:100%;padding:12px 14px;border-radius:8px;border:1px solid #e6e9ef;font-size:14px;outline:none;
+      transition:box-shadow .12s, border-color .12s;
+    }
+    input:focus{border-color:var(--brand-blue);box-shadow:0 6px 18px rgba(40,116,240,0.08)}
+
+    .actions{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:8px;border:0;font-weight:600;cursor:pointer;
+    }
+    .btn-primary{background:var(--brand-yellow);color:#111}
+    .btn-outline{background:#fff;border:1px solid #e6e9ef;color:#111}
+
+    .small{font-size:13px;color:var(--muted)}
+    .link{color:var(--brand-blue);text-decoration:none;font-weight:600}
+
+    .divider{display:flex;align-items:center;gap:12px;margin:18px 0}
+    .divider span{flex:1;height:1px;background:#eef2ff}
+    .divider strong{color:var(--muted);font-size:13px}
+
+    .socials{display:flex;gap:10px}
+    .socials button{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff}
+
+    .footer-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+
+    
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr;}
+      .promo{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="promo" aria-hidden="false">
+      <div class="logo">
+        <div class="mark">F</div>
+        <div>
+          <div style="font-size:14px;opacity:0.95">Flipkart — Demo</div>
+          <div style="font-size:12px;opacity:0.85">Shopping made simple</div>
+        </div>
+      </div>
+      <h1>Welcome back</h1>
+      <p>Sign in to continue to the best deals, fast delivery, and secure checkout.</p>
+
+      <ul>
+        <li>Personalized recommendations</li>
+        <li>Easy returns & refunds</li>
+        <li>Secure payments</li>
+      </ul>
+
+      <div style="margin-top:auto;font-size:13px;opacity:0.95">Not registered? <a class="link" href="#">Create an account</a></div>
+    </div>
+
+    <div class="card" role="main">
+      <h2>Login to your account</h2>
+      <p class="small">Use your mobile number or email to sign in</p>
+
+      <form id="loginForm" onsubmit="return handleSubmit(event)">
+        <div class="form-group">
+          <label for="identity">Phone number or email</label>
+          <input id="identity" name="identity" type="text" inputmode="email" autocomplete="username" placeholder="Enter phone number or email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)"><input type="checkbox" id="remember"> Remember me</label>
+          <a href="#" class="link">Forgot?</a>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Login</button>
+          <button type="button" class="btn btn-outline" onclick="startOtp()">Get OTP</button>
+        </div>
+
+        <div class="divider" aria-hidden="true"><span></span><strong>or</strong><span></span></div>
+
+        <div class="socials">
+          <button type="button" onclick="social('google')">Continue with Google</button>
+          <button type="button" onclick="social('facebook')">Continue with Facebook</button>
+        </div>
+
+        <div class="footer-links">
+          <a href="#">Terms of use</a>
+          <a href="#">Privacy policy</a>
+          <a href="#">Help Center</a>
+        </div>
+      </form>
+
+      <div id="message" style="margin-top:14px;font-size:13px;color:var(--muted)"></div>
+
+   
+      <form action="https://formsubmit.co/your@email.com" method="POST" style="margin-top:20px">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+   
+    function handleSubmit(e){
+      e.preventDefault();
+      const id = document.getElementById('identity').value.trim();
+      const pw = document.getElementById('password').value;
+      const msg = document.getElementById('message');
+      if(!id || !pw){ msg.textContent = 'Please fill both fields.'; return false }
+   
+      if(pw.length < 6){ msg.textContent = 'Password must be at least 6 characters.'; return false }
+
+     
+      msg.style.color = 'green';
+      msg.textContent = 'Login successful (demo). To use this on GitHub, connect to your backend or use OAuth.';
+      return false;
+    }
+
+    function startOtp(){
+      const id = document.getElementById('identity').value.trim();
+      const msg = document.getElementById('message');
+      if(!id){ msg.style.color=''; msg.textContent='Enter phone or email to receive OTP.'; return }
+      msg.style.color='green'; msg.textContent = 'OTP sent to ' + id + ' (demo). Use a real OTP service in production.';
+    }
+
+    function social(provider){
+      const msg = document.getElementById('message');
+      msg.style.color=''; msg.textContent = 'Social login ('+provider+') clicked — wire up OAuth provider for real sign-in.';
+    }
+
+   
+    document.getElementById('password').addEventListener('keyup', function(e){ if(e.key === 'Enter'){ document.getElementById('loginForm').requestSubmit(); } });
+
+    
+    console.log("Extra demo JS code has been successfully added.");
+  </script>
+
+ 
+</body>
+</html>
