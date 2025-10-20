@@ -2,196 +2,230 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flipkart-style Login </title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in • ShopVerse</title>
   <style>
+    
     :root{
-      --brand-blue:#2874f0; 
-      --brand-yellow:#ffcc00; 
-      --muted:#6b7280;
-      --bg:#f4f8ff;
+      --page-bg: #f3f3f3;
       --card-bg: #fff;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --brand: #ff9900; 
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --max-width: 980px;
+      --content-width: 350px;
+      --gap: 18px;
+      --radius: 6px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
+    html,body{height:100%}
     body{
-      background: linear-gradient(180deg,var(--bg) 0%, #ffffff 100%);
-      display:flex;align-items:center;justify-content:center;
-      padding:32px;
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--page-bg);
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:40px 16px;
     }
+
+  
     .container{
-      width:100%;max-width:960px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+      width:100%;
+      max-width:var(--max-width);
+      display:flex;
+      gap:40px;
+      align-items:flex-start;
     }
 
    
-    .promo{
-      background: linear-gradient(135deg,var(--brand-blue), #1a5ed6);
-      color: #fff;padding:34px;border-radius:12px;display:flex;flex-direction:column;gap:18px;
-      box-shadow: 0 8px 30px rgba(33, 49, 90, 0.12);
-    }
-    .logo{
-      display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px
-    }
-    .logo .mark{width:44px;height:44px;border-radius:8px;background:var(--brand-yellow);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800}
-    .promo h1{margin:0;font-size:28px}
-    .promo p{margin:0;color:rgba(255,255,255,0.9);line-height:1.4}
-    .promo ul{margin:12px 0 0 18px;padding:0}
-    .promo li{margin:8px 0;}
-
-  
     .card{
-      background:var(--card-bg);padding:28px;border-radius:12px;box-shadow:0 8px 20px rgba(20,30,60,0.06);
+      width:var(--content-width);
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:0 6px 18px rgba(17,17,17,0.06);
+      border:1px solid rgba(0,0,0,0.03);
     }
-    .card h2{margin:0 0 8px 0;font-size:20px}
-    .card p{margin:0 0 18px 0;color:var(--muted)}
 
-    .form-group{margin-bottom:14px}
-    label{display:block;font-size:13px;color:#374151;margin-bottom:6px}
-    input[type="text"], input[type="password"], input[type="email"]{
-      width:100%;padding:12px 14px;border-radius:8px;border:1px solid #e6e9ef;font-size:14px;outline:none;
-      transition:box-shadow .12s, border-color .12s;
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
     }
-    input:focus{border-color:var(--brand-blue);box-shadow:0 6px 18px rgba(40,116,240,0.08)}
-
-    .actions{display:flex;gap:12px;align-items:center;margin-top:8px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:8px;border:0;font-weight:600;cursor:pointer;
+    .logo .mark{
+      width:92px;
+      height:28px;
+      background:linear-gradient(90deg,var(--brand),#ffb84d);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:4px;
+      font-weight:700;
+      color:#1f1f1f;
+      letter-spacing:0.4px;
+      font-size:15px;
     }
-    .btn-primary{background:var(--brand-yellow);color:#111}
-    .btn-outline{background:#fff;border:1px solid #e6e9ef;color:#111}
+    .logo .name{font-size:14px;color:var(--muted)}
 
-    .small{font-size:13px;color:var(--muted)}
-    .link{color:var(--brand-blue);text-decoration:none;font-weight:600}
+    h1{
+      margin:6px 0 12px;
+      font-size:22px;
+      font-weight:600;
+    }
+    p.hint{margin:0 0 18px;color:var(--muted);font-size:13px}
 
-    .divider{display:flex;align-items:center;gap:12px;margin:18px 0}
-    .divider span{flex:1;height:1px;background:#eef2ff}
-    .divider strong{color:var(--muted);font-size:13px}
+    label{font-size:13px;display:block;margin-bottom:6px}
+    input[type="email"], input[type="password"]{
+      width:100%;
+      padding:10px 12px;
+      font-size:15px;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:#fff;
+    }
+    .button{
+      display:inline-block;
+      width:100%;
+      padding:10px 12px;
+      border-radius:4px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#111;
+      margin-top:12px;
+      box-shadow:0 2px 0 rgba(0,0,0,0.04) inset;
+    }
+    .btn-secondary{
+      background:#efefef;
+      color:#111;
+      border:1px solid #e1e1e1;
+    }
 
-    .socials{display:flex;gap:10px}
-    .socials button{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff}
-
-    .footer-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+    .helper-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .helper-row a{font-size:13px;color:var(--muted);text-decoration:none}
+    .notice{font-size:13px;color:var(--muted);margin-top:14px}
 
     
+    .side{
+      flex:1;
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-start;
+    }
+    .create-card{
+      width:100%;
+      max-width:300px;
+      background:#fff;
+      border-radius:6px;
+      padding:18px;
+      border:1px solid rgba(0,0,0,0.03);
+      box-shadow:0 6px 18px rgba(17,17,17,0.04);
+    }
+    .create-card h2{margin:0 0 8px;font-size:16px}
+    .create-card p{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .small{font-size:12px;color:var(--muted);margin-top:12px}
+
     @media (max-width:880px){
-      .container{grid-template-columns:1fr;}
-      .promo{order:2}
+      .container{flex-direction:column;align-items:center}
+      .side{margin-top:14px}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="promo" aria-hidden="false">
-      <div class="data:image/jpeg;base64,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">
-        <div class="mark">F</div>
-        <div>
-          <div style="font-size:14px;opacity:0.95">Flipkart — Demo</div>
-          <div style="font-size:12px;opacity:0.85">Shopping made simple</div>
-        </div>
+  <div class="container" role="main" aria-labelledby="signin-heading">
+    <section class="card" aria-labelledby="signin-heading">
+      <div class="logo" aria-hidden="true">
+        <div class="mark">SHOPVERSE</div>
+        <div class="name">ShopVerse</div>
       </div>
-      <h1>Welcome back</h1>
-      <p>Sign in to continue to the best deals, fast delivery, and secure checkout.</p>
 
-      <ul>
-        <li>Personalized recommendations</li>
-        <li>Easy returns & refunds</li>
-        <li>Secure payments</li>
-      </ul>
+      <h1 id="signin-heading">Sign in</h1>
+      <p class="hint">Sign in to continue to ShopVerse.</p>
 
-      <div style="margin-top:auto;font-size:13px;opacity:0.95">Not registered? <a class="link" href="#">Create an account</a></div>
-    </div>
+      <form id="signinForm" action="#" method="post" novalidate>
+        <label for="email">Email or mobile phone number</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="username" placeholder="name@example.com" required>
 
-    <div class="card" role="main">
-      <h2>Login to your account</h2>
-      <p class="small">Use your mobile number or email to sign in</p>
-
-      <form id="loginForm" onsubmit="return handleSubmit(event)">
-        <div class="form-group">
-          <label for="identity">email</label>
-          <input id="identity" name="identity" type="text" inputmode="email" autocomplete="username" placeholder="Enter phone number or email" required>
+        <div class="helper-row" style="margin-top:8px">
+          <div style="flex:1;"></div>
         </div>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
-        </div>
+        <button class="button btn-primary" id="continueBtn" type="submit">Continue to ShopVerse</button>
 
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px">
-          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)"><input type="checkbox" id="remember"> Remember me</label>
-          <a href="#" class="link">Forgot?</a>
-        </div>
-
-        <div class="actions">
-          <button class="btn btn-primary" type="submit">Login</button>
-          <button type="button" class="btn btn-outline" onclick="startOtp()">Get OTP</button>
-        </div>
-
-        <div class="divider" aria-hidden="true"><span></span><strong>or</strong><span></span></div>
-
-        <div class="socials">
-          <button type="button" onclick="social('google')">Continue with Google</button>
-          <button type="button" onclick="social('facebook')">Continue with Facebook</button>
-        </div>
-
-        <div class="footer-links">
-          <a href="#">Terms of use</a>
-          <a href="#">Privacy policy</a>
-          <a href="#">Help Center</a>
-        </div>
+        <div class="notice">By continuing, you agree to ShopVerse's <a href="#" aria-label="Terms">Conditions of Use</a> and <a href="#" aria-label="Privacy">Privacy Notice</a>.</div>
       </form>
 
-      <div id="message" style="margin-top:14px;font-size:13px;color:var(--muted)"></div>
+      <div style="height:12px"></div>
 
-   
-      <form action="https://formsubmit.co/vishnusuresh2406@gmail.com" method="POST" style="margin-top:20px">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <button class="btn btn-primary" type="submit">Send</button>
+      <form id="passwordForm" action="#" method="post" novalidate style="display:none">
+        <label for="pw">Password</label>
+        <input id="pw" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" minlength="6" required>
+
+        <div class="helper-row">
+          <label style="font-size:13px"><input type="checkbox" id="keep"> Keep me signed in</label>
+          <a href="#" id="forgot">Forgot password?</a>
+        </div>
+
+        <button class="button btn-primary" type="submit" style="margin-top:12px">Sign in</button>
       </form>
+    </section>
 
-    </div>
+    <aside class="side" aria-label="Create account">
+      <div class="create-card" role="region" aria-labelledby="create-heading">
+        <h2 id="create-heading">New to ShopVerse?</h2>
+        <p>Create an account to enjoy personalized recommendations, fast checkout, and order tracking.</p>
+        <button class="button btn-secondary" onclick="location.href='#create'">Create your ShopVerse account</button>
+        <div class="small">Already have an account? Use the form on the left to sign in.</div>
+      </div>
+    </aside>
   </div>
 
   <script>
    
-    function handleSubmit(e){
+    const signinForm = document.getElementById('signinForm');
+    const passwordForm = document.getElementById('passwordForm');
+    const continueBtn = document.getElementById('continueBtn');
+    const emailInput = document.getElementById('email');
+
+    function isEmailLike(v){
+      return /\S+@\S+\.\S+/.test(v) || /^[0-9+\-\s()]{7,}$/.test(v);
+    }
+
+    signinForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const id = document.getElementById('identity').value.trim();
-      const pw = document.getElementById('password').value;
-      const msg = document.getElementById('message');
-      if(!id || !pw){ msg.textContent = 'Please fill both fields.'; return false }
-   
-      if(pw.length < 6){ msg.textContent = 'Password must be at least 6 characters.'; return false }
-
-     
-      msg.style.color = 'green';
-      msg.textContent = 'Login successful (demo). To use this on GitHub, connect to your backend or use OAuth.';
-      return false;
-    }
-
-    function startOtp(){
-      const id = document.getElementById('identity').value.trim();
-      const msg = document.getElementById('message');
-      if(!id){ msg.style.color=''; msg.textContent='Enter phone or email to receive OTP.'; return }
-      msg.style.color='green'; msg.textContent = 'OTP sent to ' + id + ' (demo). Use a real OTP service in production.';
-    }
-
-    function social(provider){
-      const msg = document.getElementById('message');
-      msg.style.color=''; msg.textContent = 'Social login ('+provider+') clicked — wire up OAuth provider for real sign-in.';
-    }
-
-   
-    document.getElementById('password').addEventListener('keyup', function(e){ if(e.key === 'Enter'){ document.getElementById('loginForm').requestSubmit(); } });
-
+      const v = emailInput.value.trim();
+      if (!isEmailLike(v)) {
+        emailInput.style.border = '1px solid #d9534f';
+        emailInput.focus();
+        return;
+      }
     
-    console.log("Extra demo JS code has been successfully added.");
-  </script>
+      signinForm.style.display = 'none';
+      passwordForm.style.display = 'block';
+      document.getElementById('pw').focus();
+    });
 
- 
+   
+    passwordForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const pw = document.getElementById('pw').value;
+      if (pw.length < 6) {
+        document.getElementById('pw').style.border = '1px solid #d9534f';
+        document.getElementById('pw').focus();
+        return;
+      }
+      alert('Demo: validated. Integrate with your backend to complete sign-in.');
+    });
+  </script>
 </body>
 </html>
+
